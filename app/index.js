@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path')
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../build')));
