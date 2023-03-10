@@ -1,0 +1,10 @@
+- name: Copier un dossier vers un serveur
+  hosts: 51.91.251.65
+  become: yes
+
+  tasks:
+    - name: Copier le dossier local vers le serveur
+      copy:
+        src: /var/lib/jenkins/workspace/GitHub-jenkins-project
+        dest: /home/ubuntu
+        remote_src: yes

@@ -16,18 +16,14 @@ pipeline {
                 sh 'yarn'
                 sh 'yarn build'
                 dir('app') {
-                    sh 'yarn'
-                    sh 'npm install -g pm2' 
+                    sh 'yarn' 
                 }
             }
         }
-        stage('Deploy') {
+        stage('Ansible') {
             steps {
                 dir('app') {
-                    sh 'BUILD_ID=dontKillMe pm2 start index.js'  
-                    sh 'pm2 log'
-                   
-                
+                    sh 'ansible-playbook -i playbook.yml'    
                 }
             }
         }
