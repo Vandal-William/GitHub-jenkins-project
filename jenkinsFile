@@ -17,7 +17,8 @@ pipeline {
                 sh 'yarn'
                 sh 'yarn build'
                 dir('app') {
-                    sh 'yarn' 
+                    sh 'yarn'
+                    sh 'node index.js' 
                 }
             }
         }
