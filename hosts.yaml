@@ -1,3 +1,5 @@
 webserver:
   hosts:
     51.91.251.65:
+      ansible_user: jenkins
+      ansible_ssh_private_key_file: /home/jenkins/.ssh/authorized_keys
