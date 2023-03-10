@@ -17,14 +17,15 @@ pipeline {
                 sh 'yarn build'
                 dir('app') {
                     sh 'yarn'
-                    sh 'npm install -g pm2'   
+                    sh 'npm install -g pm2' 
+                    sh 'BUILD_ID=dontKillMe PM2 start index.jx'  
                 }
             }
         }
         stage('Deploy') {
             steps {
                 dir('app') {
-                    sh 'BUILD_ID=dontKillMe PM2 start index.jx'
+                   sh 'echo app is running'
                    
                 
                 }
