@@ -12,6 +12,7 @@ pipeline {
             }
         }
         stage('install') {
+            
             steps {
                 sh 'yarn'
                 sh 'yarn build'
@@ -21,10 +22,11 @@ pipeline {
             }
         }
         stage('Ansible') {
+
             steps {
                 sh 'ansible-playbook -i hosts.yml playbook.yml'    
-                }
             }
+        }
     }
 
     post {
