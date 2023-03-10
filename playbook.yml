@@ -1,5 +1,4 @@
 - name: Copier un dossier vers un serveur
-  hosts: 51.91.251.65
   become: yes
 
   tasks:

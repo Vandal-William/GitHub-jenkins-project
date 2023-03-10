@@ -25,7 +25,6 @@ pipeline {
                 sh 'ansible-playbook -i hosts.yml playbook.yml'    
                 }
             }
-        }
     }
 
     post {
