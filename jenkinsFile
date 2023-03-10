@@ -32,4 +32,16 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            sh 'echo sucess'
+            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer après le succès de la construction
+        }
+
+        failure {
+            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer en cas d'échec de la construction
+            sh 'echo Erreur'
+        }
+    }
 }
