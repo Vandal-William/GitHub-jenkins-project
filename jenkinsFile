@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('app') {
-                    sh 'BUILD_ID=dontKillMe pm2 start index.jx'  
+                    sh 'BUILD_ID=dontKillMe pm2 start index.js'  
                     sh 'echo app is running'
                    
                 
