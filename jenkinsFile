@@ -25,23 +25,11 @@ pipeline {
             steps {
                 dir('app') {
                     sh 'BUILD_ID=dontKillMe pm2 start index.js'  
-                    sh 'echo app is running'
+                    sh 'pm2 log'
                    
                 
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            sh 'echo sucess'
-            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer après le succès de la construction
-        }
-
-        failure {
-            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer en cas d'échec de la construction
-            sh 'echo Erreur'
         }
     }
 }
