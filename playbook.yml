@@ -4,4 +4,4 @@
     - name: Copier un fichier
       copy:
         src: /var/lib/jenkins/workspace/GitHub-jenkins-project
-        dest: /home/ubuntu
+        dest: /home/jenkins/GitHub-jenkins-project
