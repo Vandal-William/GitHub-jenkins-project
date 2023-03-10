@@ -18,7 +18,8 @@ pipeline {
                 sh 'yarn build'
                 dir('app') {
                     sh 'yarn'
-                    sh 'node index.js' 
+                    sh 'npm install -g pm2'
+                    sh 'pm2 start index.js' 
                 }
             }
         }
