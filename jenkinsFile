@@ -23,7 +23,7 @@ pipeline {
         stage('Ansible') {
             steps {
                 dir('app') {
-                    sh 'ansible-playbook -i playbook.yml'    
+                    sh 'ansible-playbook playbook.yml'    
                 }
             }
         }
