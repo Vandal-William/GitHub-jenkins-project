@@ -24,7 +24,7 @@ pipeline {
         stage('Ansible') {
 
             steps {
-                sh 'ansible-playbook -i /app/hosts.yml playbook.yml'    
+                sh 'ansible-playbook -i ./app/hosts.yml playbook.yml'    
             }
         }
     }
