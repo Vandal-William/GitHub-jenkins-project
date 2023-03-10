@@ -17,10 +17,7 @@ pipeline {
                 sh 'yarn'
                 sh 'yarn build'
                 dir('app') {
-                    sh 'yarn'
-                    sh 'npm install -g pm2'
-                    sh 'pm2 start index.js'
-                    sh 'pm2 log' 
+                    sh 'yarn' 
                 }
             }
         }
