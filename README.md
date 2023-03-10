@@ -2,7 +2,7 @@
 
 ```groovy
 pipeline {
-
+    
     agent any
     tools {
         nodejs 'node18'
@@ -24,14 +24,16 @@ pipeline {
                 dir('GitHub-jenkins-project/app') {
                     sh 'yarn'
                     sh 'npm install -g pm2'
-
+                    
                 }
             }
         }
         stage('Start') {
             steps {
                 dir('GitHub-jenkins-project/app') {
-                    sh 'pm2 list'
+                    sh 'scp -r /var/lib/jenkins/workspace/Pipeline-Project/app/.env  /var/lib/jenkins/workspace/MonPremierPipelineTrigger/GitHub-jenkins-project/app'
+                   
+                
                 }
             }
         }

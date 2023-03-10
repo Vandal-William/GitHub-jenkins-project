@@ -1,0 +1,47 @@
+pipeline {
+    
+    agent any
+    tools {
+        nodejs 'node18'
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                 git 'https://github.com/Vandal-William/GitHub-jenkins-project.git'
+            }
+        }
+        stage('install') {
+            steps {
+                sh 'yarn'
+                sh 'yarn build'
+                dir('app') {
+                    sh 'yarn'
+                    sh 'npm install -g pm2'
+                    
+                }
+            }
+        }
+        stage('Start') {
+            steps {
+                dir('app') {
+                    sh 'echo lancement'
+                   
+                
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            sh 'echo sucess'
+            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer après le succès de la construction
+        }
+
+        failure {
+            // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer en cas d'échec de la construction
+            sh 'echo Erreur'
+        }
+    }
+}
