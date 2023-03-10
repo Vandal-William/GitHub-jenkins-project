@@ -1,9 +1,7 @@
-- name: Copier un dossier vers un serveur
-  become: yes
-
+- name: Mon playbook
+  hosts: webserver
   tasks:
-    - name: Copier le dossier local vers le serveur
+    - name: Copier un fichier
       copy:
         src: /var/lib/jenkins/workspace/GitHub-jenkins-project
         dest: /home/ubuntu
-        remote_src: yes
