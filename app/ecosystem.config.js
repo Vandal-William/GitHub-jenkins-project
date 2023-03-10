@@ -4,7 +4,7 @@ module.exports = {
     name: 'GitHub-jenkins-project',
     script: 'index.js',
     autorestart: true,
-    watch: '.'
+    watch: true,
   }],
 
   deploy : {
@@ -15,7 +15,7 @@ module.exports = {
       repo : process.env.GIT_REPO,
       path : process.env.VPS_PATH,
       'pre-deploy-local': '',
-      'post-deploy' : 'pm2 startOrRestart ecosystem.config.js',
+      'post-deploy' : 'pm2 startOrRestart',
       'pre-setup': ''
     }
   }

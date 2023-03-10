@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
+        stage('Git-Pull') {
             steps {
                  git 'https://github.com/Vandal-William/GitHub-jenkins-project.git'
             }
@@ -17,16 +17,14 @@ pipeline {
                 sh 'yarn build'
                 dir('app') {
                     sh 'yarn'
-                    sh 'npm install -g pm2'
-                    sh 'pm2 startOrRestart pm2Config.js'
-                    sh 'pm2 save'   
+                    sh 'npm install -g pm2'   
                 }
             }
         }
-        stage('Start') {
+        stage('Deploy') {
             steps {
                 dir('app') {
-                    sh 'echo lancement'
+                    sh 'BUILD_ID=dontKillMe PM2 start index.jx'
                    
                 
                 }
