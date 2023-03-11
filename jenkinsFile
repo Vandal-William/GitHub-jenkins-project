@@ -1,4 +1,4 @@
-@Library('org.jenkinsci.plugins.workflow.job.WorkflowJobDSL') _
+@Library('org.jenkinsci.plugins.workflow.job.WorkflowJobDSL:2.39') _
 
 import org.jenkinsci.plugins.workflow.job.WorkflowJobDSL
 
