@@ -1,8 +1,11 @@
 pipeline {
-    
     agent any
     tools {
         nodejs 'node18'
+    }
+    
+    parameters {
+        string(name: 'name', defaultValue: '', description: 'Nom et prénom de l\'utilisateur')
     }
 
     stages {
@@ -12,7 +15,6 @@ pipeline {
             }
         }
         stage('install') {
-
             steps {
                 sh 'npm i'
                 sh 'npm run build'
@@ -21,8 +23,27 @@ pipeline {
                 }
             }
         }
+        stage('Create New Job') {
+            steps {
+                script {
+                    def jobName = "MyNewJob_${params.name}"
+                    def jobConfig = Jenkins.instance.getItemByFullName(env.JOB_NAME).getConfigFile().asString()
+                    def newJob = Jenkins.instance.copyJob(env.JOB_NAME, jobName)
+                    newJob.updateByXmlString(jobConfig)
+                }
+            }
+        }
+        stage('Copy Job Content') {
+            steps {
+                script {
+                    def srcJob = Jenkins.instance.getItemByFullName(env.JOB_NAME)
+                    def destJob = Jenkins.instance.getItemByFullName("MyNewJob_${params.name}")
+                    destJob.updateByXml(srcJob.getConfigFile().dom)
+                }
+            }
+        }
     }
-
+    
     post {
         success {
             sh 'echo sucess'
