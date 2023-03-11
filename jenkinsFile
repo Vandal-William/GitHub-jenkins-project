@@ -33,15 +33,15 @@ pipeline {
                 }
             }
         }
-        stage('Copy Job Content') {
-            steps {
-                script {
-                    def srcJob = Jenkins.instance.getItemByFullName(env.JOB_NAME)
-                    def destJob = Jenkins.instance.getItemByFullName("${env.JOB_NAME}_${params.name}")
-                    destJob.updateByXml(srcJob.getConfigFile().dom)
-                }
-            }
-        }
+        // stage('Copy Job Content') {
+        //     steps {
+        //         script {
+        //             def srcJob = Jenkins.instance.getItemByFullName(env.JOB_NAME)
+        //             def destJob = Jenkins.instance.getItemByFullName("${env.JOB_NAME}_${params.name}")
+        //             destJob.updateByXml(srcJob.getConfigFile().dom)
+        //         }
+        //     }
+        // }
     }
     
     post {
