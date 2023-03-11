@@ -14,10 +14,10 @@ pipeline {
         stage('install') {
 
             steps {
-                sh 'yarn'
-                sh 'yarn build'
+                sh 'npm i'
+                sh 'npm run build'
                 dir('app') {
-                    sh 'yarn' 
+                    sh 'npm i' 
                 }
             }
         }
