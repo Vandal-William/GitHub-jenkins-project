@@ -26,7 +26,7 @@ pipeline {
         stage('Create New Job') {
             steps {
                 script {
-                    def jobName = "MyNewJob_${params.name}"
+                    def jobName = "${env.JOB_NAME}_${params.name}"
                     def jobConfig = Jenkins.instance.getItemByFullName(env.JOB_NAME).getConfigFile().asString()
                     def newJob = Jenkins.instance.copy(env.JOB_NAME, jobName)
                     newJob.updateByXmlString(jobConfig)
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script {
                     def srcJob = Jenkins.instance.getItemByFullName(env.JOB_NAME)
-                    def destJob = Jenkins.instance.getItemByFullName("MyNewJob_${params.name}")
+                    def destJob = Jenkins.instance.getItemByFullName("${env.JOB_NAME}_${params.name}")
                     destJob.updateByXml(srcJob.getConfigFile().dom)
                 }
             }
