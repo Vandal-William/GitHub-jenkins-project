@@ -1,6 +1,10 @@
 
 pipeline {
     agent any
+
+    @Grab('org.jenkins-ci.plugins:workflow-job:2.39')
+    import org.jenkinsci.plugins.workflow.job.WorkflowJobDSL
+    
     tools {
         nodejs 'node18'
     }
