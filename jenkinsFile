@@ -1,4 +1,4 @@
-import org.jenkinsci.plugins.workflow.job.WorkflowJobDSL
+
 pipeline {
     agent any
     tools {
@@ -27,6 +27,7 @@ pipeline {
         stage('Create New Job') {
             steps {
                 script {
+                    import org.jenkinsci.plugins.workflow.job.WorkflowJobDSL
                     def jobName = "${env.JOB_NAME}_${params.name}"
                     def jobConfig = Jenkins.instance.getItem(env.JOB_NAME).getConfigFile().asString()
                     def newJob = WorkflowJobDSL.newJob(jobName)
