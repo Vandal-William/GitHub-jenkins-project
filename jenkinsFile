@@ -28,8 +28,9 @@ pipeline {
                 script {
                     def jobName = "${env.JOB_NAME}_${params.name}"
                     def jobConfig = Jenkins.instance.getItem(env.JOB_NAME).getConfigFile().asString()
-                    def newJob = Jenkins.instance.getItem(env.JOB_NAME).copy(jobName)
-                    newJob.updateByXmlString(jobConfig)
+                    def newJob = WorkflowJobDSL.newJob(jobName)
+                    newJob.definition = jobConfig
+                    newJob.save()
                 }
             }
         }
