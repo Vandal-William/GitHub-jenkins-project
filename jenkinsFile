@@ -21,14 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('Ansible') {
-
-            steps {
-                sh 'nunjucks-precompile ./app/hosts.yml.j2 -o ./app/hosts.js'
-                sh 'node ./app/generate-hosts.js'
-                sh 'ansible-playbook -i ./app/hosts.yml playbook.yml'    
-            }
-        }
     }
 
     post {
