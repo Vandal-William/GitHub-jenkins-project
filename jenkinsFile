@@ -46,6 +46,7 @@ pipeline {
                                 def status = cmd.execute()
                                 if (status != 0) {
                                     throw new Exception("La commande a échoué : " + cmd)
+                                }    
                             }
                         }
                     """
