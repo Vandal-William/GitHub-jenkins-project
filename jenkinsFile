@@ -43,7 +43,14 @@ pipeline {
                             steps {
                                 // Ajouter un script shell pour copier le répertoire du job parent
                                 shell "rsync -avz /var/lib/jenkins/workspace/${jobName} /var/lib/jenkins/workspace/${newName}" 
-                                sh "open https://vscode.dev/${jobName}/${newName}"     
+                                // Ouvrir le répertoire dans vscode.dev
+                                script {
+                                    if (isUnix()) {
+                                        sh "open https://vscode.dev/${jobName}/${newName}"
+                                    } else {
+                                        bat "start https://vscode.dev/${jobName}/${newName}"
+                                    }
+                                }        
                             }
                         }
                     """
