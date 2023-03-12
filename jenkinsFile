@@ -40,11 +40,12 @@ pipeline {
                                 // Définir des paramètres de build ici
                             }
                             // Ajouter des étapes de build ici
+                            steps {
+                                // Ajouter un script shell pour copier le répertoire du job parent
+                                sh "cp -r ${env.WORKSPACE} ${newName}"
+                            }
                         }
                     """
-                    // scriptApproval.pending(scriptText, "groovy")
-                    // jobDsl scriptText: scriptText
-                    // scriptApproval.approve(scriptText, "groovy")
                 }
             }
         }
