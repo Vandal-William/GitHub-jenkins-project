@@ -44,13 +44,8 @@ pipeline {
                                 // Ajouter un script shell pour copier le répertoire du job parent
                                 shell "rsync -avz /var/lib/jenkins/workspace/${jobName} /var/lib/jenkins/workspace/${newName}" 
                                 // Ouvrir le répertoire dans vscode.dev
-                                script {
-                                    if (isUnix()) {
-                                        sh "xdg-open https://vscode.dev/${jobName}/${newName}"
-                                    } else {
-                                        bat "start https://vscode.dev/${jobName}/${newName}"
-                                    }
-                                }        
+                                echo "L'URL suivante doit être ouverte dans le navigateur: https://vscode.dev/${jobName}/${newName}"
+       
                             }
                         }
                     """
