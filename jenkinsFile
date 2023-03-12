@@ -27,6 +27,10 @@ pipeline {
         stage('Create New Job') {
             steps {
                 script {
+                    System.setProperty("hudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID", "true")
+                    System.setProperty("com.cloudbees.plugins.credentials.CredentialsProvider.trackUsage", "false")
+                    sh 'chmod +x script.sh'
+                    sh './script.sh'
                     def jobName = "${env.JOB_NAME}"
                     def newName = "${jobName}_${params.name}"
                     jobDsl scriptText: """
@@ -45,19 +49,9 @@ pipeline {
                 }
             }
         }
-        // stage('Copy Job Content') {
-        //     steps {
-        //         script {
-        //             def srcJob = Jenkins.instance.getItemByFullName(env.JOB_NAME)
-        //             def destJob = Jenkins.instance.getItemByFullName("${env.JOB_NAME}_${params.name}")
-        //             destJob.updateByXml(srcJob.getConfigFile().dom)
-        //         }
-        //     }
-        // }
     
     }
 
-    
     post {
         success {
             sh 'echo sucess'
