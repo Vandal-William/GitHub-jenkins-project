@@ -42,8 +42,9 @@ pipeline {
                             // Ajouter des étapes de build ici
                         }
                     """
-                    scriptApproval.approve(scriptText, "groovy")
+                    scriptApproval.pending(scriptText, "groovy")
                     jobDsl scriptText: scriptText
+                    scriptApproval.approve(scriptText, "groovy")
                 }
             }
         }
