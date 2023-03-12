@@ -42,7 +42,10 @@ pipeline {
                             // Ajouter des étapes de build ici
                             steps {
                                 // Ajouter un script shell pour copier le répertoire du job parent
-                                sh "cp -r ${env.WORKSPACE} ${newName}"
+                                def cmd = "cp -r ${env.WORKSPACE} ${newName}"
+                                def status = cmd.execute()
+                                if (status != 0) {
+                                    throw new Exception("La commande a échoué : " + cmd)
                             }
                         }
                     """
