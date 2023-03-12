@@ -42,11 +42,8 @@ pipeline {
                             // Ajouter des étapes de build ici
                             steps {
                                 // Ajouter un script shell pour copier le répertoire du job parent
-                                def cmd = "cp -r ${env.WORKSPACE} ${newName}"
-                                def status = cmd.execute()
-                                if (status != 0) {
-                                    throw new Exception("La commande a échoué : " + cmd)
-                                }    
+                                shell "rsync -avz /var/lib/jenkins/workspace/${jobName} /var/lib/jenkins/workspace/${newName}"
+                                  
                             }
                         }
                     """
