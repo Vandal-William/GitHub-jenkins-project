@@ -29,8 +29,6 @@ pipeline {
                 script {
                     System.setProperty("hudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID", "true")
                     System.setProperty("com.cloudbees.plugins.credentials.CredentialsProvider.trackUsage", "false")
-                    sh 'chmod +x script.sh'
-                    sh './script.sh'
                     def jobName = "${env.JOB_NAME}"
                     def newName = "${jobName}_${params.name}"
                     jobDsl scriptText: """
