@@ -46,7 +46,7 @@ pipeline {
                                 // Ouvrir le répertoire dans vscode.dev
                                 script {
                                     if (isUnix()) {
-                                        sh "open https://vscode.dev/${jobName}/${newName}"
+                                        sh "xdg-open https://vscode.dev/${jobName}/${newName}"
                                     } else {
                                         bat "start https://vscode.dev/${jobName}/${newName}"
                                     }
