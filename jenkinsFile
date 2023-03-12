@@ -43,6 +43,8 @@ pipeline {
                             steps {
                                 // Ajouter un script shell pour copier le répertoire du job parent
                                 shell "rsync -avz /var/lib/jenkins/workspace/${jobName} /var/lib/jenkins/workspace/${newName}"
+                                // Ouvrir le répertoire copié dans VS Code
+                                sh "code /var/lib/jenkins/workspace/${newName}/${jobName}"
                                   
                             }
                         }
