@@ -46,8 +46,7 @@ pipeline {
                                 // Ouvrir le répertoire dans vscode
                                 script {
                                     sh """
-                                        export DISPLAY=:2 &&
-                                        /snap/bin/code  /var/lib/jenkins/workspace/${jobName}/${newName}
+                                        export DISPLAY=:2 && /snap/bin/code  /var/lib/jenkins/workspace/${jobName}/${newName}
                                     """
                                 }
                             }
@@ -61,7 +60,7 @@ pipeline {
 
     post {
         success {
-            sh 'echo sucess'
+            sh 'echo success'
             // Ici, vous pouvez ajouter des étapes supplémentaires à effectuer après le succès de la construction
         }
 
