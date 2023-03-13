@@ -6,7 +6,7 @@ pipeline {
                 script {
                     sh """
                         export DISPLAY=:2 &&
-                        /path/to/vscode /var/lib/jenkins/workspace/GitHub-jenkins-project
+                        /snap/bin/code /var/lib/jenkins/workspace/GitHub-jenkins-project
                     """
                 }
             }
