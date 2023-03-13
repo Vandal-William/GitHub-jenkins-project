@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Open directory in VS Code') {
+            steps {
+                script {
+                    sh """
+                        export DISPLAY=:2 &&
+                        /path/to/vscode /var/lib/jenkins/workspace/GitHub-jenkins-project
+                    """
+                }
+            }
+        }
+    }
+}
