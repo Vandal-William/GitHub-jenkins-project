@@ -46,9 +46,7 @@ pipeline {
                                 Ouvrir le répertoire dans vscode
                                  sh '''
                                     export DISPLAY=:2 &&
-                                    Xvnc :2 -desktop X -auth ~/.Xauthority -geometry 1024x768 -depth 24 -rfbwait 120000 -rfbauth /root/.vnc/passwd -rfbport 5902 -fp catalogue:/etc/X11/fontpath.d &
-                                    sleep 5 &&
-                                    /snap/bin/code '/var/lib/jenkins/workspace/${jobName}/${newName}'
+                                    /snap/bin/code /var/lib/jenkins/workspace/${jobName}/${newName}
                                 '''
                             }
                         }
