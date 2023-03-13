@@ -43,9 +43,8 @@ pipeline {
                             steps {
                                 // Ajouter un script shell pour copier le répertoire du job parent
                                 shell "rsync -avz /var/lib/jenkins/workspace/${jobName} /var/lib/jenkins/workspace/${newName}" 
-                                // Ouvrir le répertoire dans vscode
-                                script {
-                                    sh 'export DISPLAY=:2'
+                                // Ouvrir le répertoire dans vscode via VNC Viewer
+                                withEnv(["DISPLAY=:2"]) {
                                     sh "/snap/bin/code /var/lib/jenkins/workspace/${jobName}/${newName}"
                                 }
                             }
@@ -54,7 +53,6 @@ pipeline {
                 }
             }
         }
-    
     }
 
     post {
