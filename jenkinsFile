@@ -47,7 +47,7 @@ pipeline {
                                 script {
                                     sh """
                                         export DISPLAY=:2 &&
-                                        /path/to/vscode /var/lib/jenkins/workspace/${jobName}/${newName}
+                                        /snap/bin/code  /var/lib/jenkins/workspace/${jobName}/${newName}
                                     """
                                 }
                             }
